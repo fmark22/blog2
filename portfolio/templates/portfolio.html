@@ -70,26 +70,32 @@
     </section>
 
     {% for portfolio in portfolios.all %}
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-        <div class="row">
-            <div class="col s12 m6 13">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{portfolio.image.url}}">
-                        <span class="card-title">{{portfolio.desctiption}}</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p>사진설명</p>
-                    </div>
+    <div class="container" style="width: 400px;">
+    <div class="card" style="width: 400px; height: 400px">
+                <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{portfolio.image.url}}">
                 </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">{{portfolio.desctiption}}<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">{{portfolio.desctiption}}</a></p>
             </div>
-        </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">{{portfolio.desctiption}}<i class="material-icons right">close</i></span>
+              <p>사진설명</p>
+            </div>
+    </div>
+    </div>
+    {% endfor %}
 
-
-{% endfor %}
+    <ul class="pagination justify-content-center" style="margin-top: 30px">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active blue-grey lighten-1"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
 
 </main>
 
