@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
-    
-    
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -22,86 +16,67 @@
     <title>BLOG</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">LIKELION</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">홈 <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'new' %}">글쓰기</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'portfolio' %}">사진첩</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                더보기
-                </a>
-        </div>
-            </li>
-            </ul>
-            <i class="material-icons" style="padding-right: 10px">search</i>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="waves-effect waves-light btn blue-grey lighten-2" type="submit">Search</button>
-            </form> 
-        </div>
+<nav>
+    <div class="nav-wrapper blue-grey darken-4">
+    <a href="{% url 'home' %}" class="brand-logo" style="margin-left: 20px">LIKELION</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{% url 'home' %}">홈</a></li>
+        <li><a href="{% url 'new' %}">글쓰기</a></li>
+        <li><a href="{% url 'portfolio' %}">사진첩</a></li>
+    </ul>
+    </div>
 </nav>
 
-
-<main role="main">
-
-    <section class="jumbotron text-center">
+<div class="container">
         <div class="container">
-        <h1 class="jumbotron-heading">사진첩</h1>
-        <p class="lead text-muted">지금까지의 기록, <br> 앞으로의 기록</p>
-        <p>
-            <a href="#" class="waves-effect waves-light btn blue-grey lighten-2">- 2018</a>
+        <h3 class="head" style="text-align: center">사진첩</h3>
+        <p class="lead text-muted" style="text-align: center">지금까지의 기록, <br> 앞으로의 기록</p>
+        <p class="center-align"> 
+            <a href="#" class="waves-effect waves-light btn blue-grey lighten-2">- 2016</a>
+            <a href="#" class="waves-effect waves-light btn blue-grey lighten-2">2017</a>
+            <a href="#" class="waves-effect waves-light btn blue-grey lighten-2">2018</a>
             <a href="#" class="waves-effect waves-light btn blue-grey lighten-2">2019 - </a>
         </p>
         </div>
-    </section>
+</div>
 
     {% for portfolio in portfolios.all %}
-    <div class="container" style="width: 400px;">
-    <div class="card" style="width: 400px; height: 400px">
-                <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{portfolio.image.url}}">
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                <span class="title">{{portfolio.desctiption}}</span>
                 </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">{{portfolio.desctiption}}<i class="material-icons right">more_vert</i></span>
-              <p><a href="#">{{portfolio.desctiption}}</a></p>
+            <div class="col s12 m6 l4">                            
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img width="305" height="229" src="{{portfolio.image.url}}" class="responsive-img wp-post-image"sizes="(max-width: 305px) 100vw, 305px" /> 
+                        <span class="card-title home">{{portfolio.desctiption}}</span>
+                    </div>
+                </div>        
             </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">{{portfolio.desctiption}}<i class="material-icons right">close</i></span>
-              <p>사진설명</p>
             </div>
+        </div>
     </div>
-    </div>
+    
     {% endfor %}
 
-    <ul class="pagination justify-content-center" style="margin-top: 30px">
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-        <li class="active blue-grey lighten-1"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-    </ul>
 
-</main>
+    <ul class="pagination justify-content: center">
+            <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
+            <li class="active blue-grey lighten-1"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
+        </ul>
+       
 
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-</body>
+    </body>
 </html>

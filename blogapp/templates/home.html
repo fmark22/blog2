@@ -5,19 +5,25 @@
 <br>
 {% for blog in blogs.all %}
 <div class="container">
-    <div class="card">
-    <div class="card-body">
-        <h2 class="card-title">{{blog.title}}</h2>
-        <h6 class="card-subtitle mb-2 text-muted">{{blog.pub_date}}</h6>
-        <p class="card-text">{{blog.summary}}</p>
-        <a href="{% url 'detail' blog.id %}" class="card-link">...more</a>
+<div class="row">
+    <div class="col s12">
+        <div class="card white">
+            <div class="card-content black-text">
+                <span class="card-title">{{blog.title}}</span>
+                <p>{{blog.summary}}</p>
+            </div>
+            <div class="card-action" style="padding-top: 10px; padding-botton: 10px;">
+                <p>{{blog.pub_date}}</p>
+                <a href="{% url 'detail' blog.id %}">...more</a>
+            </div>
+        </div>
     </div>
-    </div> <br>
-</div>    
+</div>
+</div>
 
 {% endfor %}
 
-<ul class="pagination justify-content-center">
+<ul class="pagination justify-content: center">
     <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
     <li class="active blue-grey lighten-1"><a href="#!">1</a></li>
     <li class="waves-effect"><a href="#!">2</a></li>
